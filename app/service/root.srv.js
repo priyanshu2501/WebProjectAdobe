@@ -11,6 +11,10 @@
 			// console.log("Service Function called");	
 			return str1+opr+str2;
 		};
+		this.getDetails = function() {
+				var userDetails = JSON.parse(localStorage.getItem('user'));
+				return userDetails;
+		}
 
 	});
 })();

@@ -19,10 +19,12 @@
 	<script type="text/javascript" src="app/service/root.srv.js"></script>	
 
 </head>
-<body ng-app="main_module" ng-controller="RootController" ng-init="name='Priyanshu';address='Raptinagar,Gorakhpur'">
+<body ng-app="main_module" ng-controller="RootController">
 
 <top-bar brand="'HungryBirds'" first="'How'" second="'Help'"></top-bar>
-<second-bar ng-if="detailsInLS" ng-controller="SecondBarController" brand="join(name, address, ' @' )"></second-bar>
-
+<div ng-controller="SecondBarController">
+	<second-bar brand="join('Hi '+user.name, user.address, ' @ ')" class="col-xs-10 col-md-8 col-sm-4"></second-bar>
+	<span ng-include="'app/template/modalDialog.html'" ng-if="detailsInLS" class="pull-left"></span>
+</div>	
 </body>
 </html>
