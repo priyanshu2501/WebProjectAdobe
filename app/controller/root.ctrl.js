@@ -6,16 +6,22 @@
 (function() {
 	var ng = angular.module("main_module",["service_module"]);
 
-	ng.controller("RootController", function($scope, $rootScope, RootService) {
+	ng.controller("RootController", function($scope, $rootScope, $window, RootService) {
 			$rootScope.user = {
 				'name':'Customer', 'address':'Home'
 			};
 			$scope.first=  $scope.second = $scope.brand = "";
 			$scope.userLt = localStorage.getItem('user');
 			$rootScope.detailsInLS = ($scope.userLt == null)?false:true;
-			if($scope.detailsInLS) {
-				$rootScope.user = RootService.getDetails();
+			$window.onload = function() {	
+				if(!$rootScope.detailsInLS) {
+					$("#changeDetailsBtn").click();
+				}
+			};
+			if($rootScope.detailsInLS) {
+					$rootScope.user = RootService.getDetails();
 			}
+			
 			console.log($rootScope.detailsInLS);
 		});
 

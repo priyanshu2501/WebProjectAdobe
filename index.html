@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HungryBirds</title>
+	<title>Foodie</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/custom_style.css">
@@ -23,10 +23,13 @@
 <body ng-app="main_module" ng-controller="RootController" background="images/bgnd.jpg">
 
 <top-bar brand="'HungryBirds'" first="'How'" second="'Help'"></top-bar>
-<div ng-controller="SecondBarController">
+<div class="sb" ng-controller="SecondBarController">
 	<second-bar brand="join('Hi '+user.name, user.address, ' @ ')" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
-	<span ng-include="'app/template/modalDialog.html'" ng-if="detailsInLS" class="pull-right col-xs-1 col-md-1 col-sm-1"></span>
-
-</div>	
+	<span ng-include="'app/template/modalDialog.html'" ng-if="!detailsInLS" class="pull-right col-xs-1 col-md-1 col-sm-1"></span>
+</div>
+<div class="container">
+	<div ng-view>
+	</div>
+</div>
 </body>
 </html>
