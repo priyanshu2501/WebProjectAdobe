@@ -25,12 +25,19 @@
 <body ng-app="main_module" ng-controller="RootController" background="images/bgnd.jpg">
 
 <top-bar brand="'Foodie'" first="'How'" second="'Help'"></top-bar>
-<div class="sb" ng-controller="SecondBarController">
-	<second-bar brand="join(greet+user.name, user.address, opr)" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
-	<div ng-include="'app/template/modalDialog.html'" class="pull-right col-xs-1 col-md-1 col-sm-1"></div>
-</div>
+<nav class="navbar sb" ng-controller="SecondBarController">
+  	<div class="container-fluid">
+  		<second-bar brand="join(greet+user.name, user.address, opr)" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
+		<div ng-include="'app/template/modalDialog.html'" class="pull-right col-xs-1 col-md-1 col-sm-1"></div>
+	</div>	
+</nav>
 
-<div class="container" style="color:white;padding:0px auto;">
+
+<!-- <div class="sb" ng-controller="SecondBarController">
+	
+</div> -->
+
+<div class="container complete-parent" style="padding:40px">
 	<div ng-view></div>
 </div>
 </body>
