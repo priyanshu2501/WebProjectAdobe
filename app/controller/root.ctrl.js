@@ -4,10 +4,23 @@
 */
 
 (function() {
-	var ng = angular.module("main_module",[]);
+	var ng = angular.module("main_module",["service_module"]);
+
 	ng.controller("RootController", function($scope) {
 		$scope.first=  $scope.second = $scope.brand = "";
+		$scope.userLt = localStorage.getItem('user');
+		$scope.detailsInLS = ($scope.userLt == null)?false:true;
+		// console.log($scope.userLt);
 	});
+	
+	ng.controller("SecondBarController",function($scope, RootService){
+
+		$scope.join = function(str1, str2, opr) {
+			// console.log("controller Function called");	
+			return RootService.join(str1, str2, opr);
+		};
+	});
+	
 	ng.directive("topBar", function(){
 		x={};
 		x.restrict='EA';
@@ -19,7 +32,8 @@
 		};
 		return x;
 	});
-	ng.directive("secondBar", function(){
+	
+	ng.directive("secondBar", function(RootService){
 		x={};
 		x.restrict='EA';
 		x.templateUrl='app/template/secondbar.html';
@@ -28,4 +42,6 @@
 		};
 		return x;
 	});
+
+	
 })();

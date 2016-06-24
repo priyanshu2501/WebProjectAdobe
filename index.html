@@ -16,11 +16,13 @@
 	<script type="text/javascript" src="js/angular-route.js"></script>
 	<script type="text/javascript" src="js/angular-cookies.js"></script>
 	<script type="text/javascript" src="app/controller/root.ctrl.js"></script>	
+	<script type="text/javascript" src="app/service/root.srv.js"></script>	
+
 </head>
 <body ng-app="main_module" ng-controller="RootController" ng-init="name='Priyanshu';address='Raptinagar,Gorakhpur'">
 
 <top-bar brand="'HungryBirds'" first="'How'" second="'Help'"></top-bar>
-<second-bar brand="{{$name}}"></second-bar>
+<second-bar ng-if="detailsInLS" ng-controller="SecondBarController" brand="join(name, address, ' @' )"></second-bar>
 
 </body>
 </html>
