@@ -10,6 +10,9 @@
 			$rootScope.user = {
 				'name':'Customer', 'address':'Home'
 			};
+			$rootScope.options = [
+				'Chinese', 'Indian', 'Thai', 'Vegetarian'
+			];
 			$scope.first=  $scope.second = $scope.brand = "";
 			$scope.userLt = localStorage.getItem('user');
 			$rootScope.detailsInLS = ($scope.userLt == null)?false:true;

@@ -27,10 +27,10 @@
 <top-bar brand="'Foodie'" first="'How'" second="'Help'"></top-bar>
 <div class="sb" ng-controller="SecondBarController">
 	<second-bar brand="join(greet+user.name, user.address, opr)" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
-	<span ng-include="'app/template/modalDialog.html'" class="pull-right col-xs-1 col-md-1 col-sm-1"></span>
+	<div ng-include="'app/template/modalDialog.html'" class="pull-right col-xs-1 col-md-1 col-sm-1"></div>
 </div>
 
-<div class="container" style="color:white">
+<div class="container" style="color:white;padding:0px auto;">
 	<div ng-view></div>
 </div>
 </body>
