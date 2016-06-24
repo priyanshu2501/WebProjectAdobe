@@ -44,10 +44,17 @@
 		};
 
 	});
-	
 
-
-	
+	ng.controller("RestaurantListController", function($scope, $rootScope,RootService) {
+		$scope.filteredRestaurants=[];
+		RootService.getRestaurants().then(function(result){
+			$scope.filteredRestaurants = result.data;
+		},function(){console.log("Error in getting Restaurant List");});
+		$scope.range = function(n) {
+			console.log(n);
+      		return new Array(n);
+    	};
+	});
 	
 	ng.directive("topBar", function(){
 		x={};

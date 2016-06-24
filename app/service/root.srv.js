@@ -15,6 +15,19 @@
 				var userDetails = JSON.parse(localStorage.getItem('user'));
 				return userDetails;
 		}
+		this.getRestaurants = function() {
+			var deferred= $q.defer();
+			$http.get("http://localhost:8000/restaurant").then(
+				function(data) {
+					deferred.resolve(data);
+				},
+				function(data) {
+					deferred.reject(data);
+				}
+			);
+			// console.log(deferred);
+			return deferred.promise;
+		};
 
 	});
 })();
