@@ -13,6 +13,7 @@
 			$rootScope.options = [
 				'Chinese', 'Indian', 'Thai', 'Vegetarian'
 			];
+			$rootScope.optionValues = {'Chinese':false, 'Indian':false, 'Thai':false, 'Vegetarian':false}
 			$scope.first=  $scope.second = $scope.brand = "";
 			$scope.userLt = localStorage.getItem('user');
 			$rootScope.detailsInLS = ($scope.userLt == null)?false:true;
@@ -25,7 +26,6 @@
 					$rootScope.user = RootService.getDetails();
 			}
 			
-			console.log($rootScope.detailsInLS);
 		});
 
 
@@ -37,7 +37,6 @@
 		};
 
 		$scope.submitDetails = function(name, address) {
-			console.log("ajbf");
 			localStorage.removeItem('user');
 			localStorage.setItem('user', JSON.stringify({'name':name, 'address':address}));
 			$rootScope.user = RootService.getDetails();
@@ -46,13 +45,38 @@
 	});
 
 	ng.controller("RestaurantListController", function($scope, $rootScope,RootService) {
-		$scope.filteredRestaurants=[];
+		$scope.filteredRestaurants = $scope.restaurants = [];
 		RootService.getRestaurants().then(function(result){
-			$scope.filteredRestaurants = result.data;
+			$scope.filteredRestaurants = $scope.restaurants = result.data;
 		},function(){console.log("Error in getting Restaurant List");});
 		$scope.range = function(n) {
-			console.log(n);
       		return new Array(n);
+    	};
+    	$scope.filterRestaurants = function(option) {
+    		$anySelected = false;
+    		$rootScope.options.forEach(function(option) {
+    			if($rootScope.optionValues[option])
+    				$anySelected = true;
+    		});
+    		console.log('anySelected'+$anySelected);
+    		console.log($scope.restaurants);
+    		if(!$anySelected) {
+    			$scope.filteredRestaurants = $scope.restaurants;
+    		}
+    		else {
+    			$result = [];
+    			$scope.restaurants.forEach(function(restaurant){
+    				$selectable = false;
+    				$rootScope.options.forEach(function(option) {
+    					if($rootScope.optionValues[option] && restaurant.cuisine.toUpperCase() == option.toUpperCase()) {
+    						$selectable = true;
+    					}
+    				});
+    				if($selectable)
+    					$result.push(restaurant);
+    			});
+    			$scope.filteredRestaurants = $result;
+    		}
     	};
 	});
 	

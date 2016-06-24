@@ -12,15 +12,15 @@
 			<tbody ng-repeat="option in options" class="panel-bodys">
 			  	<tr>
 			  		<td>{{option}}</td>
-			    	<td><label><input type="checkbox" value=""></label></td>
+			    	<td><label><input type="checkbox" value="" ng-model="optionValues[option]" ng-change="filterRestaurants(option)"></label></td>
 			  	</tr>
 			</tbody>
 		</table>
 	</div>
 
 	<div class="col-sm-8 col-md-8 pull-right " style="background-color:white;color:black;padding:0px">
-		<div class="panel-heading ">
-		    {{filteredRestaurants.length}} Restaurants found !</th>
+		<div class="panel-heading">
+		    {{filteredRestaurants.length}} Restaurants found !
 		</div>
 
 		<table class="table table-striped table-hover panel panel-default">
