@@ -1,0 +1,26 @@
+<!-- 	
+	Created by: Priyanshu Srivastava (psrivast@adobe.com)
+		Created on: 23 June, 2016
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HungryBirds</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	<script type="text/javascript" src="js/angular-cookies.js"></script>
+	<script type="text/javascript" src="app/controller/root.ctrl.js"></script>	
+</head>
+<body ng-app="main_module" ng-controller="RootController" ng-init="name='Priyanshu';address='Raptinagar,Gorakhpur'">
+
+<top-bar brand="'HungryBirds'" first="'How'" second="'Help'"></top-bar>
+<second-bar brand="{{$name}}"></second-bar>
+
+</body>
+</html>
