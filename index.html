@@ -18,18 +18,20 @@
 	<script type="text/javascript" src="js/angular-cookies.js"></script>
 	<script type="text/javascript" src="app/controller/root.ctrl.js"></script>	
 	<script type="text/javascript" src="app/service/root.srv.js"></script>	
+	<script type="text/javascript" src="app/config/root.cfg.js"></script>	
+
 
 </head>
 <body ng-app="main_module" ng-controller="RootController" background="images/bgnd.jpg">
 
-<top-bar brand="'HungryBirds'" first="'How'" second="'Help'"></top-bar>
+<top-bar brand="'Foodie'" first="'How'" second="'Help'"></top-bar>
 <div class="sb" ng-controller="SecondBarController">
-	<second-bar brand="join('Hi '+user.name, user.address, ' @ ')" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
-	<span ng-include="'app/template/modalDialog.html'" ng-if="!detailsInLS" class="pull-right col-xs-1 col-md-1 col-sm-1"></span>
+	<second-bar brand="join(greet+user.name, user.address, opr)" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
+	<span ng-include="'app/template/modalDialog.html'" class="pull-right col-xs-1 col-md-1 col-sm-1"></span>
 </div>
-<div class="container">
-	<div ng-view>
-	</div>
+
+<div class="container" style="color:white">
+	<div ng-view></div>
 </div>
 </body>
 </html>

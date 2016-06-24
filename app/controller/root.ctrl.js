@@ -4,7 +4,7 @@
 */
 
 (function() {
-	var ng = angular.module("main_module",["service_module"]);
+	var ng = angular.module("main_module",["service_module", "ngRoute", "ngCookies"]);
 
 	ng.controller("RootController", function($scope, $rootScope, $window, RootService) {
 			$rootScope.user = {
