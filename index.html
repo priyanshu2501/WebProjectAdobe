@@ -9,6 +9,7 @@
 	<title>HungryBirds</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/custom_style.css">
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -19,12 +20,13 @@
 	<script type="text/javascript" src="app/service/root.srv.js"></script>	
 
 </head>
-<body ng-app="main_module" ng-controller="RootController">
+<body ng-app="main_module" ng-controller="RootController" background="images/bgnd.jpg">
 
 <top-bar brand="'HungryBirds'" first="'How'" second="'Help'"></top-bar>
 <div ng-controller="SecondBarController">
-	<second-bar brand="join('Hi '+user.name, user.address, ' @ ')" class="col-xs-10 col-md-8 col-sm-4"></second-bar>
-	<span ng-include="'app/template/modalDialog.html'" ng-if="detailsInLS" class="pull-left"></span>
+	<second-bar brand="join('Hi '+user.name, user.address, ' @ ')" class="col-xs-10 col-md-8 col-sm-5"></second-bar>
+	<span ng-include="'app/template/modalDialog.html'" ng-if="detailsInLS" class="pull-right col-xs-1 col-md-1 col-sm-1"></span>
+
 </div>	
 </body>
 </html>
