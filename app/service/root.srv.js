@@ -28,6 +28,18 @@
 			// console.log(deferred);
 			return deferred.promise;
 		};
-
+		this.getRestaurant = function(id) {
+			var deferred= $q.defer();
+			$http.get("http://localhost:8000/restaurant/"+id).then(
+				function(data) {
+					deferred.resolve(data);
+				},
+				function(data) {
+					deferred.reject(data);
+				}
+			);
+			// console.log(deferred);
+			return deferred.promise;
+		};
 	});
 })();

@@ -25,11 +25,11 @@ Main Configuration File for Routing and handling cookies
 				$rootScope.opr = " @ ";
 			}
 		})
-		.when("/menu/:resName", {
+		.when("/menu/:resId", {
 			templateUrl:'app/page/restaurant.html',
-			controller:function($scope,$rootScope) {
+			controller:function($scope,$rootScope,$routeParams) {
 				// console.log("jkbfjkbn");
-
+				$scope.restaurantId = $routeParams.resId;
 				$rootScope.greet = "Deliver To:  ";
 				$rootScope.opr = " , ";
 			}

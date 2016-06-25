@@ -80,6 +80,27 @@
     	};
 	});
 	
+	ng.controller("RestaurantController",function($scope,RootService) {
+		$scope.price = 0;
+		RootService.getRestaurant($scope.restaurantId).then(function(result){
+				$scope.restaurant = result.data;
+				$scope.menuChosen = {};
+			});
+		$scope.addItem = function(item) {
+			if($scope.menuChosen[item.name])
+				$scope.menuChosen[item.name] = $scope.menuChosen[item.name] + 1;
+			else
+				$scope.menuChosen[item.name] = 1;
+			$scope.price = $scope.price + item.price;
+			$scope.price = Math.round($scope.price*100)/100;
+		}
+		$scope.deleteItem = function(item) {
+			$scope.menuChosen[item.name] = $scope.menuChosen[item.name] - 1;
+			$scope.price = $scope.price - item.price;
+			$scope.price = Math.round($scope.price*100)/100;
+		}
+	});
+
 	ng.directive("topBar", function(){
 		x={};
 		x.restrict='EA';
